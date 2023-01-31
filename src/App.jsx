@@ -15,7 +15,7 @@ function App() {
       setCharacters(data.results)
       setTimeout(() => {
         setIsLoading(!isLoading)
-      }, 3500)
+      }, 1500)
       // setIsLoading(!isLoading)
     })
   },[])

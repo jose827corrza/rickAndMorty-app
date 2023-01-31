@@ -20,7 +20,7 @@ export const Header = () => {
         <h1 className='font-splineSans text-3xl text-white'>React Hooks Training</h1>
         <button
             onClick={toogleDarkMode}
-        >{isDark ? <FaSun size={24} color={'#DDB947'}/> : <FaMoon size={24} color={'#1D3A73'}/>  }</button>
+        >{isDark ? <FaSun size={24} color={'#DDB947'}/> : <FaMoon size={24} color={'#00B9D8'}/>  }</button>
     </div>
   )
 }

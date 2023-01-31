@@ -12,3 +12,6 @@ Forget about lyfe cycle, with this, its possible to control the different compon
 
 ## useContext
 Provides through components wrapping the access to different variables and functions created  and exposed with the provider
+
+
+To go to the deployed site click [Here](https://rickzable-with-hooks.netlify.app/)
