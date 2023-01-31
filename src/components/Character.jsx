@@ -9,7 +9,6 @@ export const Character = ({name, imgUrl, status, species, id, isFavorite}) => {
 
   const addToFavourite = (favourite) => {
     dispatch({ type: 'ADD_TO_FAV', payload: favourite})
-    console.log(favourites);
   }
   return (
     <>
@@ -22,6 +21,7 @@ export const Character = ({name, imgUrl, status, species, id, isFavorite}) => {
             </div>
             <button
               // onClick={() => addToFavourite(id)}
+              className='dark:bg-deep-purple-space bg-cyan-400 text-white rounded-full px-3 py-1 m-2'
               onClick={isFavorite}
             >Add to favourites</button>
         </div>
