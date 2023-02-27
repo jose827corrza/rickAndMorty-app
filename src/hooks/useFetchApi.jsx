@@ -11,9 +11,9 @@ export const useFetchApi = (url, loadingTime, ...args) => {
             setCharacters(data.results)
             setIsLoading(!isLoading)
               setTimeout(() => {
-                // setIsLoading(!isLoading)
+                setIsLoading(!isLoading)
               }, loadingTime)
-              // setIsLoading(!isLoading)
+              setIsLoading(!isLoading)
             })
         }
       },[...args])

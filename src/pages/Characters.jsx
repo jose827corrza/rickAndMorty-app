@@ -4,9 +4,10 @@ import { Character } from "../components/Character"
 import { Search } from '../components/Search';
 
 import { useApiReducer} from '../hooks/reducer/useApiReducer';
+import { LoadingPage } from './LoadingPage';
 
 
-export const Characters = ({data, currentPage, setCurrentPage, setIsLoading}) => {
+export const Characters = ({data, currentPage, setCurrentPage, setIsLoading, isLoading}) => {
   const { dispatch, favourites} = useApiReducer();
   const [search, setSearch] = useState('')
   const searchInput = useRef(null);
@@ -42,6 +43,9 @@ export const Characters = ({data, currentPage, setCurrentPage, setIsLoading}) =>
   const handleCurrentPage =(sign) => {
     if(sign === '+'){
       setCurrentPage(currentPage + 1)
+      setTimeout(() =>{
+        setIsLoading(false)
+      }, 1000)
       setIsLoading(true)
     } else if (sign === '-') {
       setCurrentPage(currentPage - 1)
@@ -99,26 +103,34 @@ export const Characters = ({data, currentPage, setCurrentPage, setIsLoading}) =>
           ))
         }
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   md:p-24 gap-8 '>
-          
-          
-          {
-            // It is EXTREMELY IMPORTANT, inside the map function, after the arrow fuction return inside  ()
-            // Otherwise it won't render
-          // data.map(character => (
-          filteredCharacters.map(character => (
-            <Character 
-                key={character.id} 
-                name={character.name} 
-                imgUrl={character.image}
-                status={character.status}
-                species={character.species}
-                id={character.id}
-                isFavorite={() => setFavorite(character)}
-                />
-          ))
-            }
-      </div>
+
+      {/* // Here list of characters */}
+
+      {
+        !isLoading ? 
+        (<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4   md:p-24 gap-8 '>
+            
+            
+            {
+              // It is EXTREMELY IMPORTANT, inside the map function, after the arrow fuction return inside  ()
+              // Otherwise it won't render
+            // data.map(character => (
+            filteredCharacters.map(character => (
+              <Character 
+                  key={character.id} 
+                  name={character.name} 
+                  imgUrl={character.image}
+                  status={character.status}
+                  species={character.species}
+                  id={character.id}
+                  isFavorite={() => setFavorite(character)}
+                  />
+            ))
+              }
+        </div>)
+        :
+        <LoadingPage />
+      }
     </>
   )
 }
