@@ -6,7 +6,6 @@ const initialState = {
   
   function useApiReducer() {
     const favouriteReducer = (state, action) => {
-      
       switch (action.type) {
         case 'ADD_TO_FAV':
           if (Array.isArray(state.favourites) && state.favourites.length){
@@ -28,9 +27,10 @@ const initialState = {
         case 'REM_TO_FAV':
           if(state.favourites.find(character => character.id === action.payload.id)){
             let favIndex = state.favourites.findIndex(character => character.id === action.payload.id)
+            const test = state.favourites.splice(favIndex, 1)
             return {
               ...state,
-              favourites: state.favourites.splice(favIndex, 1)
+              favourites: [...state.favourites]
             }
           }
         default:

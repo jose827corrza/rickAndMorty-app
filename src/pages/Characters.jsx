@@ -13,7 +13,6 @@ export const Characters = ({data, currentPage, setCurrentPage, setIsLoading, isL
   const searchInput = useRef(null);
   const setFavorite = (favourite) => {
     dispatch({ type: 'ADD_TO_FAV', payload: favourite})
-    // console.log(favourites);
   }
 
   const unsetFavorite = (favourite) => {
@@ -69,7 +68,7 @@ export const Characters = ({data, currentPage, setCurrentPage, setIsLoading, isL
       /> */}
       <div className=' flex align-middle'>
       <Search search={search} searchInput={searchInput} handleSearch={handleSearch} />
-      <p className='py-3 pl-3 text-white'>Pagina Actual</p>
+      <p className='py-3 pl-3 text-white'>Current Page</p>
       {currentPage > 1 ? 
         <button 
           className='dark:bg-cyan-400 bg-deep-purple-space rounded-md mx-2 p-2 mt-2'
@@ -96,7 +95,7 @@ export const Characters = ({data, currentPage, setCurrentPage, setIsLoading, isL
       <div className='md:grid md:grid-cols-8 md:px-8 px-4 md:gap-6 gap-4 flex overflow-x-auto'>
         {
           favourites.favourites.map((favourite) => (
-            <li key={favourite.id}>
+            <li key={`${favourite.id}-fav`}>
               <img className='rounded-full md:h-24 h-18 hover:opacity-50' src={favourite.image} alt="fav_img" onClick={() => unsetFavorite(favourite)}/>
               <p className='text-white'>{favourite.name}</p>
             </li>
