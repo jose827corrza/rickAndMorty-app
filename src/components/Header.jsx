@@ -7,11 +7,11 @@ export const Header = () => {
     const toogleDarkMode = () => {
         if (!isDark) {
             document.documentElement.classList.add('dark')
-            console.log('activated dark mode');
+            // console.log('activated dark mode');
             setIsDark(true);
           } else {
             document.documentElement.classList.remove('dark')
-            console.log('Deactivated dark mode');
+            // console.log('Deactivated dark mode');
             setIsDark(false);
           }
     }
